@@ -8,12 +8,13 @@ Cypress.Commands.add('login', (
             cy.get('#password').type(password, {log: false})
             cy.contains('button', 'Entrar').click();
             cy.wait('@getLogin', {timeout: 5000})
-    })
-    
-    Cypress.Commands.add('acessaCardapio', () => {
             cy.get('#menu-button-17').click()
             cy.contains('button', 'Selecionar empresa').click()
             cy.contains('button', 'TOUCH').click()
+    })
+    
+    Cypress.Commands.add('acessaCardapio', () => {
+            
             cy.get('.css-1b57knf').click()
             cy.contains('div', 'Cardápio').click()
     })
@@ -67,5 +68,19 @@ Cypress.Commands.add('novoSubGrupo', () => {
         cy.get('#menu-button-67').click()
         cy.contains('button', 'Novo subgrupo').click()
         cy.get('#nome').click().type('Pães')
+        cy.contains('button', 'Salvar').click()
+})
+
+Cypress.Commands.add('novoHorario', () => {
+        cy.get('.css-1b57knf').click()
+        cy.contains('div', 'Horário de funcionamento').click()
+        cy.contains('button', 'Incluir').click()
+        cy.get('#diaSemana').select('Sábado')
+        cy.get(':nth-child(2) > .react-datepicker-wrapper > .react-datepicker__input-container > .inputDate').click()
+        cy.get('.react-datepicker__time-list > :nth-child(57)').click()
+        cy.get(':nth-child(3) > .react-datepicker-wrapper > .react-datepicker__input-container > .inputDate').click()
+        cy.get(':nth-child(3) > .react-datepicker-wrapper > .react-datepicker__input-container > .inputDate').click()
+        cy.get(':nth-child(94)').click()
+        cy.get('#idCardapio').select('Cardápio')
         cy.contains('button', 'Salvar').click()
 })
