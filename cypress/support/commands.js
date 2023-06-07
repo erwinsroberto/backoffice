@@ -11,10 +11,9 @@ Cypress.Commands.add('login', (
             cy.get('#menu-button-17').click()
             cy.contains('button', 'Selecionar empresa').click()
             cy.contains('button', 'TOUCH').click()
-    })
+    })   
     
-    Cypress.Commands.add('acessaCardapio', () => {
-            
+    Cypress.Commands.add('acessaCardapio', () => {          
             cy.get('.css-1b57knf').click()
             cy.contains('div', 'Cardápio').click()
     })
@@ -31,14 +30,14 @@ Cypress.Commands.add('login', (
         cy.get('#nome').clear().type('Cardápio de verão')
         cy.get('#descricao').clear().type('Esse cardápio será o de verão')
         cy.contains('button', 'Salvar').click()
-})
+        })
 
 Cypress.Commands.add('excluirCardapio', () => {
         cy.get('.chakra-select').select('Cardápio de verão')
         cy.contains('button', 'Mais opções').click()
         cy.contains('button', 'Deletar cardápio').click()
         cy.contains('button', 'Confirmar').click()
-})
+        })
 
 Cypress.Commands.add('criaGrupo', () => {
         cy.get('.chakra-select').select('Cardápio')
@@ -46,7 +45,7 @@ Cypress.Commands.add('criaGrupo', () => {
         cy.contains('button', 'Novo grupo').click()
         cy.get('#nome').click().type('BEBIDAS')
         cy.contains('button', 'Salvar').click()
-})
+        })
 
 //Ainda não consegui fazer o cypress upar a imagem de forma automatizada
 Cypress.Commands.add('uploadProduto', () => {
@@ -62,14 +61,14 @@ Cypress.Commands.add('novoProduto', () => {
         cy.get('#preco').click().clear().type('3.50')
         cy.get('#descricao').click().type('Pão francês na chapa com margarina, acompanha um copo americano de café puro ou café com leite.')
         cy.contains('button', 'Salvar').click()
-})
+        })
 
 Cypress.Commands.add('novoSubGrupo', () => {
         cy.get('#menu-button-67').click()
         cy.contains('button', 'Novo subgrupo').click()
         cy.get('#nome').click().type('Pães')
         cy.contains('button', 'Salvar').click()
-})
+                })
 
 Cypress.Commands.add('novoHorario', () => {
         cy.get('.css-1b57knf').click()
@@ -83,4 +82,21 @@ Cypress.Commands.add('novoHorario', () => {
         cy.get(':nth-child(94)').click()
         cy.get('#idCardapio').select('Cardápio')
         cy.contains('button', 'Salvar').click()
-})
+        })
+
+Cypress.Commands.add('alterarHorario', () => {
+        cy.get('.css-1b57knf').click()
+        cy.contains('div', 'Horário de funcionamento').click()
+        cy.get(':nth-child(1) > :nth-child(1) > .chakra-checkbox > .chakra-checkbox__control').click()
+        cy.get('.chakra-button__group > :nth-child(2)').click()
+        cy.get('#diaSemana').select('Sábado')
+        cy.contains('button', 'Salvar').click()
+        })
+
+Cypress.Commands.add('excluirHorario', () => {
+        cy.get('.css-1b57knf').click()
+        cy.contains('div', 'Horário de funcionamento').click()
+        cy.get(':nth-child(1) > :nth-child(1) > .chakra-checkbox >.chakra-checkbox__control').click()
+        cy.get('.chakra-button__group > :nth-child(1)').click()
+        cy.contains('button', 'Confirmar').click()
+        })
