@@ -100,3 +100,27 @@ Cypress.Commands.add('excluirHorario', () => {
         cy.get('.chakra-button__group > :nth-child(1)').click()
         cy.contains('button', 'Confirmar').click()
         })
+
+Cypress.Commands.add('cadastraProduto', () => {
+        cy.get('.css-1b57knf').click()
+        cy.get('[href="/products"]').click()
+        cy.contains('button', 'Incluir').click()
+        cy.get('#nome').click().type('Açaí 700ml')
+        cy.get('#preco').click().type('22.50')
+        cy.get('#descricao').click().type('Açaí no copo de 700 ml, acompanha morango, leite em pó, leite condensado, granola e kiwi')
+        cy.get('.css-13hj8nd > :nth-child(7)').click()
+        cy.contains('button', 'Salvar').click()
+})
+
+Cypress.Commands.add('alteraProduto', () => {
+        cy.get('.css-1b57knf').click()
+        cy.get('[href="/products"]').click()
+        cy.get(':nth-child(1) > :nth-child(1) > .css-gg4vpm > .chakra-checkbox > .chakra-checkbox__control').click()
+        cy.get('.chakra-button__group > :nth-child(2)').click()
+        cy.get('#nome').click().clear().type('Espetinho de Frango')
+        cy.get('#preco').click().clear().type('13.50')
+        cy.get('#descricao').clear().type('Espetinho de peito de frango, acompanha uma coca-cola 350ml')
+        cy.get(':nth-child(7) > .chakra-checkbox > .chakra-checkbox__control').click()
+        cy.get(':nth-child(6) > .chakra-checkbox > .chakra-checkbox__control').click()
+        cy.contains('button', 'Salvar').click()
+})
