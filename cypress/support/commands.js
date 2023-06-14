@@ -124,3 +124,41 @@ Cypress.Commands.add('alteraProduto', () => {
         cy.get(':nth-child(6) > .chakra-checkbox > .chakra-checkbox__control').click()
         cy.contains('button', 'Salvar').click()
 })
+
+Cypress.Commands.add('excluiProduto', () => {
+        cy.get('.css-1b57knf').click()
+        cy.get('[href="/products"]').click()
+        cy.get(':nth-child(1) > :nth-child(1) > .css-gg4vpm > .chakra-checkbox > .chakra-checkbox__control').click()
+        cy.get('.chakra-button__group > :nth-child(1)').click()
+        cy.contains('button', 'Confirmar').click()
+})
+
+Cypress.Commands.add('criaRelacao', () => {
+        cy.get('.css-1b57knf').click()
+        cy.get('[href="/products"]').click()
+        cy.get(':nth-child(1) > :nth-child(1) > .css-gg4vpm > .chakra-checkbox > .chakra-checkbox__control').click()
+        cy.contains('button', 'Gerenciar relações').click()
+        cy.contains('button', 'Criar nova relação').click()
+        cy.get('#tabs-1--tabpanel-1 > .css-p63zu > .css-ne4rdq > .css-nz0pkx > .css-1yg2yje > :nth-child(2) > .css-vlt8qi > .css-196jp92 > .chakra-radio-group > .chakra-radio > .chakra-radio__control').click()
+        cy.get('#tabs-1--tabpanel-1 > .css-1mtg3i2 > .css-j2qmt3').click()
+})
+
+Cypress.Commands.add('editaRelacao', () => {
+        cy.get('.css-1b57knf').click()
+        cy.get('[href="/products"]').click()
+        cy.get(':nth-child(1) > :nth-child(1) > .css-gg4vpm > .chakra-checkbox > .chakra-checkbox__control').click()
+        cy.contains('button', 'Gerenciar relações').click()
+        cy.get('[aria-label="Editar relação"]').click()
+        cy.get('#tabs-1--tabpanel-2 > .css-p63zu > .chakra-stack > :nth-child(3) > .chakra-checkbox > .chakra-checkbox__control').click()
+        cy.get('#tabs-1--tabpanel-2 > .css-1mtg3i2 > .css-j2qmt3').click()
+})
+
+Cypress.Commands.add('excluiRelacao', () => {
+        cy.get('.css-1b57knf').click()
+        cy.get('[href="/products"]').click()
+        cy.get(':nth-child(1) > :nth-child(1) > .css-gg4vpm > .chakra-checkbox > .chakra-checkbox__control').click()
+        cy.contains('button', 'Gerenciar relações').click()
+        cy.get('[aria-label="Remover relação"]').click()
+        cy.contains('button', 'Salvar').click()
+        cy.contains('button', 'Confirmar').click()
+})
